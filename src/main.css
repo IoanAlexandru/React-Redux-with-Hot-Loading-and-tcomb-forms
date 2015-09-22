@@ -1,0 +1,39 @@
+body {
+	background-color: lightyellow;
+	margin: 0;
+	padding: 50px;
+	font-size: 10px;
+}
+
+fieldset {
+	border: none;
+}
+
+button {
+	display: inline-block;
+	margin: 10px 5px;
+}
+
+label {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+label:after{
+	content: ": "
+
+}
+
+p {
+	font-size: 2em;
+}
+
+.error {
+	font-weight: bold;
+	color: red;
+}
+
+input {
+	display: inline-block;
+	margin: 10px 0;
+}

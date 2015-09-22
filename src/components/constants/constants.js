@@ -1,0 +1,13 @@
+const LOG_TEXT = "LOG_TEXT";
+const ADD_TEXT = "ADD_TEXT";
+const READ_TEXT = "READ_TEXT";
+const REMOVE_ALL = "REMOVE_ALL";
+const ADD_PERSON = "ADD_PERSON";
+
+export default {
+	LOG_TEXT,
+	ADD_TEXT,
+	READ_TEXT,
+	REMOVE_ALL,
+	ADD_PERSON
+}
