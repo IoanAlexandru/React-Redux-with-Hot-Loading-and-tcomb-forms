@@ -14,10 +14,11 @@ function addText(text){
 	}
 }
 
-function readText(index){
+function readText(index, id){
 	return {
 		type: READ_TEXT,
-		index: index
+		index, 
+		id
 	}
 }
 

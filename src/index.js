@@ -19,10 +19,11 @@ const routes = {
 }
 
 React.render(<Provider store={store}>
-    {() => <Router>
-	        <Route path="/" component={Navbar}>
+    { () => <Router>
+	         <Route path="/" component={Navbar}>
 	          <Route path="registration" component={App} />
 	          <Route path="todo" component={Todo} />
-	        </Route>
-	      </Router>}
+	         </Route>
+	        </Router>
+	}
   </Provider>, document.getElementById('root'));

@@ -10,6 +10,10 @@ class Todo extends Component {
 		this.addTextToList = this.addTextToList.bind(this);
 		this.removeTexts = this.removeTexts.bind(this);
 		this.setTextToRead = this.setTextToRead.bind(this);
+		this.filterTexts = this.filterTexts.bind(this);
+		this.state = {
+			searchWord: ''
+		}
 	}
 
 	addTextToList(){
@@ -25,21 +29,35 @@ class Todo extends Component {
 		this.props.dispatch(removeAllTexts());
 	}
 
-	setTextToRead(index){
-		this.props.dispatch(readText(index));
+	setTextToRead(index, id){
+		this.props.dispatch(readText(index, id));
 	}	
 
+	filterTexts(){ 		
+		this.setState({
+			searchWord: React.findDOMNode(this.refs.filterInput).value
+		})
+	}
+
 	render(){
-		var self = this;
+		let self = this;
+		let texts = [];
+		texts = this.props.texts
+					.filter(function(text){
+						return text.name.toLowerCase().indexOf(self.state.searchWord.toLowerCase()) > -1;
+ 					})
+ 					.map(function(text,index){
+						return <Text key={text.name} index={index} setTextToRead={self.setTextToRead} text={text}/>
+					});
+		
 		return <div>
-				<input type="text" placeholder="Type here" ref="textInput"/>
+				<input type="text" placeholder="Type here to add text" ref="textInput"/>
 				<button onClick={this.addTextToList}>Add text</button>
 				<button onClick={this.removeTexts}>Remove all texts</button>
-				{
-					this.props.texts.map(function(text,index){
-						return <Text key={text.name} index={index} setTextToRead={self.setTextToRead} text={text}/>
-					})
-				}										
+				<br/>
+				<input type="text" placeholder="Type here to find texts" ref="filterInput" onChange={this.filterTexts}/>
+				<h3>Filtered text list</h3>	
+				{texts}																	
 			   </div>
 	}
 }

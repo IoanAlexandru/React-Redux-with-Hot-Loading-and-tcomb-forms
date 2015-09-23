@@ -10,6 +10,10 @@ class App extends Component {
 		super();
 		this.save = this.save.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+		this.state = {
+			searchWord: ""
+		}
 	}
 
 	save(){
@@ -21,21 +25,33 @@ class App extends Component {
 		this.refs.form.getComponent(path).validate();
 	}
 
-	render() {
-	return <div>
-			<Form ref="form" type={Person} options={options} onChange={this.onChange}/>
-			<button onClick={this.save}>Save</button>
-			{
-				this.props.persons.map(function(person){
-					return <div key={Math.floor(Math.random() * 100000000) + 100}>
-							<p>{person.name} {person.surname}</p>
-							<p>{person.email}</p>
-							<p>{person.age}, {person.gender}</p>
-						   </div>
-				})
-			}			
-	  	   </div>
+	handleChange(){
+		this.setState({
+			searchWord: React.findDOMNode(this.refs.filterInput).value
+		})
 	}
+
+	render() {
+		var self = this;
+		let persons = this.props.persons
+					.filter(function(person){
+						return person.name.toLowerCase().indexOf(self.state.searchWord.toLowerCase()) > -1;
+ 					})
+ 					.map(function(person){
+						return <div key={Math.floor(Math.random() * 100000000) + 100}>
+								<p>{person.name} {person.surname}</p>
+								<p>{person.email}</p>
+								<p>{person.age}, {person.gender}</p>
+							   </div>
+					});		
+		return <div>
+				<Form ref="form" type={Person} options={options} onChange={this.onChange}/>
+				<button onClick={this.save}>Save</button>	
+				<br/>
+				<input type="text" placeholder="Search persons by name" ref="filterInput" onChange={this.handleChange}/>	
+				{persons}				
+		  	   </div>
+		}
 }
 
 function select(state) {
