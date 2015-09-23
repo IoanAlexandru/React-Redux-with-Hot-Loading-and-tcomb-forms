@@ -7,7 +7,7 @@ export default class Text extends Component {
 	}
 
 	setTextToRead(){
-		this.props.setTextToRead(this.props.index, this.props.text.id);
+		this.props.setTextToRead(this.props.text.id);
 	}
 
 	render(){

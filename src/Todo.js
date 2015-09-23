@@ -29,8 +29,8 @@ class Todo extends Component {
 		this.props.dispatch(removeAllTexts());
 	}
 
-	setTextToRead(index, id){
-		this.props.dispatch(readText(index, id));
+	setTextToRead(id){
+		this.props.dispatch(readText(id));
 	}	
 
 	filterTexts(){ 		

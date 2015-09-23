@@ -38,22 +38,21 @@ export default function textApp(state = initialState, action) {
 		      }]
       });
     case READ_TEXT:
-	  for (var i = 0; i < state.texts.length; i++) {
-	    if (i == action.index && state.texts[i].id == action.id) {
-			return Object.assign({}, state, {
-				texts: [
-					...state.texts.slice(0, action.index),
-					Object.assign({}, state.texts[action.index], {
-						read: true
-					}),
-					...state.texts.slice(action.index + 1)
-				]			
-			});			
-	    } else {
-	      console.log(i, action.index,"False");
-	      return state;	
-	    }
-	  }    	
+    	let selectedIndex;
+    	for (var i in state.texts){
+    		if(state.texts[i].id == action.id){
+    			selectedIndex = i;
+    		}
+    	}
+		return Object.assign({}, state, {
+			texts: [
+				...state.texts.slice(0, selectedIndex),
+				Object.assign({}, state.texts[selectedIndex], {
+					read: true
+				}),
+				...state.texts.slice(selectedIndex + 1)
+			]			
+		});		  	
     case LOG_TEXT:
       console.log(action.text);
       return state;

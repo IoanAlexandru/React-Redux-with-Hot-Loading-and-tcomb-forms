@@ -14,10 +14,9 @@ function addText(text){
 	}
 }
 
-function readText(index, id){
+function readText(id){
 	return {
 		type: READ_TEXT,
-		index, 
 		id
 	}
 }
