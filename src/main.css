@@ -24,6 +24,10 @@ label:after{
 
 }
 
+h1 {
+	font-size: 3em;
+}
+
 p {
 	font-size: 2em;
 }
@@ -36,4 +40,29 @@ p {
 input {
 	display: inline-block;
 	margin: 10px 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	display: inline-block;
+	margin: 10px 10px;
+}
+
+ul li:first-child {
+	margin-left: 0;
+}
+
+li a {
+	text-decoration: none;
+	font-size: 2em;
+	color: lightblue;
+}
+
+a:hover {
+	padding-bottom: 5px;
+	border-bottom: 1px lightblue solid;
 }
