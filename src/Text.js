@@ -17,6 +17,6 @@ export default class Text extends Component {
 		} else {
 			read = "Hasn't been read";
 		}
-		return <p onClick={this.setTextToRead}>{this.props.text.id} - {this.props.text.name} - {read}</p>
+		return <p onClick={this.setTextToRead}>{this.props.text.name} - {read}</p>
 	}
 }
