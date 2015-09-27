@@ -38,18 +38,29 @@ class App extends Component {
 						return person.name.toLowerCase().indexOf(self.state.searchWord.toLowerCase()) > -1;
  					})
  					.map(function(person){
-						return <div key={Math.floor(Math.random() * 100000000) + 100}>
-								<p>{person.name} {person.surname}</p>
-								<p>{person.email}</p>
-								<p>{person.age}, {person.gender}</p>
-							   </div>
+						return <tr key={Math.floor(Math.random() * 100000000) + 100}>
+								<td>{person.name} {person.surname}</td>
+								<td>{person.email}</td>
+								<td>{person.age}, {person.gender}</td>
+							   </tr>
 					});		
 		return <div>
 				<Form ref="form" type={Person} options={options} onChange={this.onChange}/>
 				<button onClick={this.save}>Save</button>	
 				<br/>
 				<input type="text" placeholder="Search persons by name" ref="filterInput" onChange={this.handleChange}/>	
-				{persons}				
+				<table>
+					<thead>
+						<tr>
+							<th>Name and surname</th>
+							<th>Email</th>
+							<th>Age and gender</th>
+						</tr>
+					</thead>
+					<tbody>
+						{persons}
+					</tbody>
+				</table>				
 		  	   </div>
 		}
 }

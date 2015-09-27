@@ -11,6 +11,9 @@ export default class Navbar extends Component {
 				<h1>React - Redux - React Router</h1>
 				<ul>
 					<li>
+						<a href="/">Home</a>
+					</li>							
+					<li>
 						<Link to="/">Registration</Link>
 					</li>
 					<li>

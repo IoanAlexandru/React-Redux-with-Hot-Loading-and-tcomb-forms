@@ -70,3 +70,21 @@ a:hover {
 	padding-bottom: 5px;
 	border-bottom: 1px lightblue solid;
 }
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+table th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 10px;	
+}
+
+table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 10px;
+}

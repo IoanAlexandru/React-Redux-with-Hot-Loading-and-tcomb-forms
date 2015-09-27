@@ -15,7 +15,6 @@ React.render(<Provider store={store}>
 	         <Route path="/" component={Navbar}>
 	          <IndexRoute component={App} />
 	          <Route path="todo" component={Todo} />
-            <Router path="*" component={NoMatch} />
 	         </Route>
 	        </Router>
 	}

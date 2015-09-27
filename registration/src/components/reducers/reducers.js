@@ -2,7 +2,19 @@ import { logText, addText, readText, removeAllTexts, filterText, emptyFilteredTe
 import { LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, FILTER_TEXT, EMPTY_FILTERED, ADD_PERSON } from '../constants/constants';
 
 const initialState = {
-  persons: [],
+  persons: [{
+    name: "Ioan",
+    surname: "Alexandru",
+    email: "lordjedi32@yahoo.com",
+    age: 27,
+    gender: "Male"
+  }, {
+    name: "Petrache",
+    surname: "Denisa",
+    email: "deny.sa_md@yahoo.com",
+    age: 21,
+    gender: "Female"    
+  }],
   texts: [
     {
       name: "Doing something",
