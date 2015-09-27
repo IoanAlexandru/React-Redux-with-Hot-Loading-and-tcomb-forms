@@ -42,6 +42,7 @@
     "redux": "^3.0.0",
     "style-loader": "^0.12.4",
     "tcomb-form": "^0.6.6",
-    "webpack": "^1.12.2"
+    "webpack": "^1.12.2",
+    "superagent": "^1.4.0"
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import request from 'superagent';
 import Text from './Text';
 import {addPerson} from './components/actions/actions';
 import {Form, Person, options} from './components/form/form';
@@ -19,6 +20,18 @@ class App extends Component {
 	save(){
 		let value = this.refs.form.getValue();
 		this.props.dispatch(addPerson(value));
+		let persons = this.props.persons;
+		
+		request
+			.post('/addpersons')
+			.send(persons)
+			.end(function(err,res){
+				if(err){
+					console.log(err);
+				} else {
+					console.log(res);
+				}
+			})
 	}
 
 	onChange(value, path) {
