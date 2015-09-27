@@ -55,7 +55,7 @@ class Todo extends Component {
 				<button onClick={this.addTextToList}>Add text</button>
 				<button onClick={this.removeTexts}>Remove all texts</button>
 				<br/>
-				<input type="text" placeholder="Type here to find texts" ref="filterInput" onChange={this.filterTexts}/>
+				<input type="text" placeholder="Type here to search texts" ref="filterInput" onChange={this.filterTexts}/>
 				<h3>Filtered text list</h3>	
 				{texts}																	
 			   </div>
