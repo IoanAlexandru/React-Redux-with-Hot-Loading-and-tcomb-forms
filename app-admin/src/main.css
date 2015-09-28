@@ -1,0 +1,90 @@
+body {
+	background-color: lightyellow;
+	margin: 0;
+	padding: 50px;
+	font-size: 10px;
+}
+
+fieldset {
+	border: none;
+}
+
+button {
+	display: inline-block;
+	margin: 10px 5px;
+}
+
+label {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+label:after{
+	content: ": "
+
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h3 {
+	font-size: 2em;
+}
+
+p {
+	font-size: 2em;
+}
+
+.error {
+	font-weight: bold;
+	color: red;
+}
+
+input {
+	display: inline-block;
+	margin: 10px 0;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+ul li {
+	display: inline-block;
+	margin: 10px 10px;
+}
+
+ul li:first-child {
+	margin-left: 0;
+}
+
+li a {
+	text-decoration: none;
+	font-size: 2em;
+	color: lightblue;
+}
+
+a:hover {
+	padding-bottom: 5px;
+	border-bottom: 1px lightblue solid;
+}
+
+table {
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 10px;
+}
+
+table th {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 10px;	
+}
+
+table td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px 10px;
+}

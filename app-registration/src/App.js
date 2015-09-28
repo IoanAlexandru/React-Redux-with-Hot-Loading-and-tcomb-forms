@@ -4,6 +4,7 @@ import request from 'superagent';
 import Text from './Text';
 import {addPerson} from './components/actions/actions';
 import {Form, Person, options} from './components/form/form';
+import P from './Person'
 import './main.css';
 
 class App extends Component {
@@ -51,11 +52,7 @@ class App extends Component {
 						return person.name.toLowerCase().indexOf(self.state.searchWord.toLowerCase()) > -1;
  					})
  					.map(function(person){
-						return <tr key={Math.floor(Math.random() * 100000000) + 100}>
-								<td>{person.name} {person.surname}</td>
-								<td>{person.email}</td>
-								<td>{person.age}, {person.gender}</td>
-							   </tr>
+						return <P key={Math.floor(Math.random() * 100000000) + 100} person={person} />
 					});		
 		return <div>
 				<Form ref="form" type={Person} options={options} onChange={this.onChange}/>
