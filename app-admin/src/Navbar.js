@@ -8,16 +8,15 @@ export default class Navbar extends Component {
 
 	render(){
 		return <div>
-				<h1>App Admin</h1>
-				<ul>
+				<ul className="nav navbar-nav">
 					<li>
 						<a href="/">Home</a>
 					</li>							
-					<li>
-						<Link to="/persons">Persons</Link>
-					</li>
 				</ul>
+				<div className="clearfix"></div>
+				<div className="container">
 				{this.props.children}
+				</div>
 			   </div>
 	}
 }

@@ -1,4 +1,4 @@
-import {LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, ADD_PERSON} from '../constants/constants';
+import {LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, ADD_PERSON, UPDATE_PERSONS} from '../constants/constants';
 
 function logText(text){
 	return {
@@ -34,10 +34,17 @@ function addPerson(personToAdd){
 	}
 }
 
+function updatePersons(){
+	return {
+		type: UPDATE_PERSONS
+	}
+}
+
 export default {
 	logText,
 	addText,
 	readText,
 	removeAllTexts,
-	addPerson
+	addPerson,
+	updatePersons
 }

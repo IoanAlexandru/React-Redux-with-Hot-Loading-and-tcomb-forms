@@ -1,19 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var persons = [{
-    name: "Ioan",
-    surname: "Alexandru",
-    email: "lordjedi32@yahoo.com",
-    age: 27,
-    gender: "Male"
-  }, {
-    name: "Petrache",
-    surname: "Denisa",
-    email: "deny.sa_md@yahoo.com",
-    age: 21,
-    gender: "Female"    
-  }]
+var persons = [];
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -8,8 +8,7 @@ export default class Navbar extends Component {
 
 	render(){
 		return <div>
-				<h1>App Registration and Todo List</h1>
-				<ul>
+				<ul className="nav navbar-nav">
 					<li>
 						<a href="/">Home</a>
 					</li>							
@@ -20,7 +19,12 @@ export default class Navbar extends Component {
 						<Link to="/todo">Todo List</Link>
 					</li>
 				</ul>
-				{this.props.children}
+				<div className="clearfix">
+				</div>
+				<br/>
+				<div className="container">
+					{this.props.children}
+				</div>
 			   </div>
 	}
 }

@@ -1,28 +1,19 @@
-var path = require('path');
-var webpack = require('webpack');
+var webpack = require('webpack')
 
 module.exports = {
-  devtool: 'eval',
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index.js'
-  ],
+  entry: ['bootstrap-webpack/bootstrap.config.js','./src/index.js'],
   output: {
-    filename: 'bundle.js'
+    filename: 'bundle.js'       
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
-      include: path.join(__dirname, 'src')
-    },{
-      test: /\.css$/,
-      loader: "style!css"
-    }]
+    loaders: [
+      { test: /\.js$/, loader: 'babel-loader' },
+      { test: /\.css$/, loader: 'style!css' },
+      {
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+        loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
+      }
+    ]
   }
 };
 

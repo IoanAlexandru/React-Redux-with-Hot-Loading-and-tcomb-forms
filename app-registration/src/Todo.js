@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Text from './Text';
 import {logText, addText, readText, removeAllTexts} from './components/actions/actions';
-import './main.css';
 
 class Todo extends Component {
 	constructor(){
@@ -50,14 +49,25 @@ class Todo extends Component {
 						return <Text key={text.name} index={index} setTextToRead={self.setTextToRead} text={text}/>
 					});
 		
-		return <div>
-				<input type="text" placeholder="Type here to add text" ref="textInput"/>
-				<button onClick={this.addTextToList}>Add text</button>
-				<button onClick={this.removeTexts}>Remove all texts</button>
-				<br/>
-				<input type="text" placeholder="Type here to search texts" ref="filterInput" onChange={this.filterTexts}/>
-				<h3>Filtered text list</h3>	
-				{texts}																	
+		return <div className="container">
+				<div className="row">
+					<div className="col-md-4">
+						<input className="form-control" type="text" placeholder="Type here to add text" ref="textInput"/>
+					</div>
+					<div className="col-md-4">
+						<input className="form-control" type="text" placeholder="Type here to search texts" ref="filterInput" onChange={this.filterTexts}/>				
+					</div>						
+					<div className="col-md-4">
+						<div className="row btn-group">
+							<button className="btn btn-info" onClick={this.addTextToList}>Add text</button>
+							<button className="btn btn-danger" onClick={this.removeTexts}>Remove all texts</button>				
+						</div>					
+					</div>				
+				</div>			
+				<div className="row text-center">
+					<h2>Filtered text list</h2>	
+					{texts}					
+				</div>																
 			   </div>
 	}
 }

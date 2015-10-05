@@ -1,5 +1,6 @@
-import { logText, addText, readText, removeAllTexts, filterText, emptyFilteredTexts, addPerson } from '../actions/actions';
-import { LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, FILTER_TEXT, EMPTY_FILTERED, ADD_PERSON } from '../constants/constants';
+import request from 'superagent'
+import { logText, addText, readText, removeAllTexts, filterText, emptyFilteredTexts, addPerson, updatePersons } from '../actions/actions';
+import { LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, FILTER_TEXT, EMPTY_FILTERED, ADD_PERSON, UPDATE_PERSONS } from '../constants/constants';
 
 const initialState = {
   persons: [{
@@ -41,6 +42,21 @@ export default function textApp(state = initialState, action) {
           gender: action.person.gender
 				}]
       });
+    case UPDATE_PERSONS: {
+      request
+        .get('/persons')
+        .end(function(err, res){
+          if(err){
+            console.log(err)
+            return state
+          } else {
+            // console.log(res.body)
+            return Object.assign({}, state, {
+              persons: res.body
+            })
+          }
+        })
+    }
     case ADD_TEXT:
       return Object.assign({}, state, {
         texts: [...state.texts, {

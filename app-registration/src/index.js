@@ -2,6 +2,9 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
 import {Router, Route, IndexRoute, NoMatch} from 'react-router';
+import 'normalize.css/normalize.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap-theme.css'
 import App from './App';
 import Todo from './Todo';
 import Navbar from './Navbar';
