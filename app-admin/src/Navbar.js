@@ -11,7 +11,10 @@ export default class Navbar extends Component {
 				<ul className="nav navbar-nav">
 					<li>
 						<a href="/">Home</a>
-					</li>							
+					</li>
+					<li>
+						<a href="/logout">Logout</a>
+					</li>												
 				</ul>
 				<div className="clearfix"></div>
 				<div className="container">
