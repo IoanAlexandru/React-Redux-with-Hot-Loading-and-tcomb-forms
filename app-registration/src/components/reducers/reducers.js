@@ -1,6 +1,6 @@
 import request from 'superagent'
-import { logText, addText, readText, removeAllTexts, filterText, emptyFilteredTexts, addPerson, updatePersons } from '../actions/actions';
-import { LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, FILTER_TEXT, EMPTY_FILTERED, ADD_PERSON, UPDATE_PERSONS } from '../constants/constants';
+import { logText, addText, readText, editText, removeTodo, removeAllTexts, filterText, emptyFilteredTexts, addPerson, updatePersons } from '../actions/actions';
+import { LOG_TEXT, ADD_TEXT, READ_TEXT, EDIT_TEXT, REMOVE_TODO, REMOVE_ALL, FILTER_TEXT, EMPTY_FILTERED, ADD_PERSON, UPDATE_PERSONS } from '../constants/constants';
 
 const initialState = {
   persons: [{
@@ -72,15 +72,44 @@ export default function textApp(state = initialState, action) {
     			selectedIndex = i;
     		}
     	}
-		return Object.assign({}, state, {
-			texts: [
-				...state.texts.slice(0, selectedIndex),
-				Object.assign({}, state.texts[selectedIndex], {
-					read: true
-				}),
-				...state.texts.slice(selectedIndex + 1)
-			]			
-		});		  	
+
+      let newTexts = state.texts
+      newTexts[selectedIndex].read = true
+
+  		return Object.assign({}, state, {
+  			texts: [...newTexts]
+  		});		
+
+    case EDIT_TEXT: 
+      let selectedIndexTwo;
+      for (var i in state.texts){
+        if(state.texts[i].id == action.id){
+          selectedIndexTwo = i;
+        }
+      }	
+
+      let newTextsTwo = state.texts
+      newTextsTwo[selectedIndexTwo].name = "Banjo"
+
+      return Object.assign({}, state, {
+        texts: [...newTextsTwo]
+      }); 
+
+    case REMOVE_TODO: 
+      let selectedIndexThree;
+      for (var i in state.texts){
+        if(state.texts[i].id == action.id){
+          selectedIndexThree = i;
+        }
+      } 
+
+      let newTextsThree = state.texts
+      newTextsThree.splice(selectedIndexThree, 1)
+
+      return Object.assign({}, state, {
+        texts: [...newTextsThree]
+      }); 
+
     case LOG_TEXT:
       console.log(action.text);
       return state;

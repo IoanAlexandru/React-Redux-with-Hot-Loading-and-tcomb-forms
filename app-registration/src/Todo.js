@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Text from './Text';
-import {logText, addText, readText, removeAllTexts} from './components/actions/actions';
+import {logText, addText, readText, editText, removeTodo, removeAllTexts} from './components/actions/actions';
 
 class Todo extends Component {
 	constructor(){
@@ -10,6 +10,8 @@ class Todo extends Component {
 		this.removeTexts = this.removeTexts.bind(this);
 		this.setTextToRead = this.setTextToRead.bind(this);
 		this.filterTexts = this.filterTexts.bind(this);
+		this.editText = this.editText.bind(this)
+		this.removeTodo = this.removeTodo.bind(this)
 		this.state = {
 			searchWord: ''
 		}
@@ -22,6 +24,14 @@ class Todo extends Component {
 			alert("Insert some text to add");
 		}		
 		React.findDOMNode(this.refs.textInput).value = '';
+	}
+
+	editText(id){
+		this.props.dispatch(editText(id))
+	}
+
+	removeTodo(id){
+		this.props.dispatch(removeTodo(id))
 	}	
 
 	removeTexts(){
@@ -46,7 +56,7 @@ class Todo extends Component {
 						return text.name.toLowerCase().indexOf(self.state.searchWord.toLowerCase()) > -1;
  					})
  					.map(function(text,index){
-						return <Text key={text.name} index={index} setTextToRead={self.setTextToRead} text={text}/>
+						return <Text key={text.id} index={index} editText={self.editText} removeTodo={self.removeTodo} setTextToRead={self.setTextToRead} text={text}/>
 					});
 		
 		return <div className="container">
@@ -66,7 +76,17 @@ class Todo extends Component {
 				</div>			
 				<div className="row text-center">
 					<h2>Filtered text list</h2>	
-					{texts}					
+					<table className="table table-striped">
+						<thead>
+							<th>Todo</th>
+							<th>Complete</th>
+							<th>Edit</th>
+							<th>Remove</th>
+						</thead>
+						<tbody>
+							{texts}
+						</tbody>
+					</table>					
 				</div>																
 			   </div>
 	}

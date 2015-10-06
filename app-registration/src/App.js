@@ -14,7 +14,8 @@ class App extends Component {
 		this.componentDidMount = this.componentDidMount.bind(this)
 		this.componentDidUpdate = this.componentDidUpdate.bind(this)
 		this.state = {
-			searchWord: ""
+			searchWord: '',
+			message: ''
 		}
 	}
 
@@ -40,16 +41,13 @@ class App extends Component {
 	save(){
 		let value = this.refs.form.getValue();
 		this.props.dispatch(addPerson(value));
+		this.setState({
+			message: 'Person saved'
+		})
 	}
 
 	onChange(value, path) {
 		this.refs.form.getComponent(path).validate();
-	}
-
-	handleChange(){
-		this.setState({
-			searchWord: React.findDOMNode(this.refs.filterInput).value
-		})
 	}
 
 	render() {	
@@ -57,7 +55,8 @@ class App extends Component {
 				<Form ref="form" type={Person} options={options} onChange={this.onChange}/>
 				<p>
 					<button className="btn btn-lg btn-info" onClick={this.save}>Save</button>	
-				</p>				
+				</p>	
+				<p>{this.state.message}</p>			
 		  	   </div>
 		}
 }

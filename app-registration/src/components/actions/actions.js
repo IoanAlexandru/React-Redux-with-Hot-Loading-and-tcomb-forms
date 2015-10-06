@@ -1,4 +1,4 @@
-import {LOG_TEXT, ADD_TEXT, READ_TEXT, REMOVE_ALL, ADD_PERSON, UPDATE_PERSONS} from '../constants/constants';
+import {LOG_TEXT, ADD_TEXT, READ_TEXT, EDIT_TEXT , REMOVE_TODO ,REMOVE_ALL, ADD_PERSON, UPDATE_PERSONS} from '../constants/constants';
 
 function logText(text){
 	return {
@@ -17,6 +17,20 @@ function addText(text){
 function readText(id){
 	return {
 		type: READ_TEXT,
+		id
+	}
+}
+
+function editText(id){
+	return {
+		type: EDIT_TEXT,
+		id
+	}
+}
+
+function removeTodo(id){
+	return {
+		type: REMOVE_TODO,
 		id
 	}
 }
@@ -44,6 +58,8 @@ export default {
 	logText,
 	addText,
 	readText,
+	editText,
+	removeTodo,
 	removeAllTexts,
 	addPerson,
 	updatePersons
