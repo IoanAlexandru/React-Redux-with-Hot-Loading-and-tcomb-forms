@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+  div(class='container')
+    h1 Login
+    form(action='login' method='POST' class='form')
+      div(class='form-group')
+        input(type='text' placeholder='Username' class='form-control')
+        <br/>
+        input(type='password' placeholder='Password' class='form-control')
+        <br/>
+        <button class='btn btn-default' type='submit'>Login</button>

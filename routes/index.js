@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport')
 
 var persons = [{
     name: "Ioan",
@@ -24,6 +25,21 @@ router.post('/addpersons', function(req, res, next){
 	persons = req.body;
 	res.json(persons);
 });
+
+router.get('/login', function(req, res) {
+    res.render('login');
+});
+
+router.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
+router.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
 
 router.get('/persons', function(req, res, next){
 	res.send(persons);
