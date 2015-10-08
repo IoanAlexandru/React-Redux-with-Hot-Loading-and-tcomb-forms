@@ -4,6 +4,8 @@ block content
 
   div(class='container')
     h1 Login
+    if error
+      p= error
     form(action='' method='POST' class='form')
       div(class='form-group')
         input(type='text' placeholder='Username' name='username' class='form-control')

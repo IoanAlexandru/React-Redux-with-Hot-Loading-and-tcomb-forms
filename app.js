@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var flash = require('connect-flash');
 var LocalStrategy = require('passport-local');
 
 var routes = require('./routes/index');
@@ -17,12 +18,6 @@ app.set('view engine', 'jade');
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
-    // User.findOne({ username: username }, function (err, user) {
-    //   if (err) { return done(err); }
-    //   if (!user) { return done(null, false); }
-    //   if (!user.verifyPassword(password)) { return done(null, false); }
-    //   return done(null, user);
-    // });
     if(username == "johndoe" && password == "password"){
       done(null, { id: 123, name: username})
     } else {
@@ -49,6 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use('/', routes);
 app.use('/registration', express.static(path.join(__dirname, 'app-registration')));
@@ -90,7 +86,8 @@ function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){
     next()
   } else {
-    res.redirect('/login')
+    req.flash('error', 'You are not authenticated. Please Login or Sign up for a new account.');
+    res.redirect('/login');
   }
 }
 

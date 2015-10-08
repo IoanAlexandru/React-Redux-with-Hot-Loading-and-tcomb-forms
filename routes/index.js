@@ -27,7 +27,7 @@ router.post('/addpersons', function(req, res, next){
 });
 
 router.get('/login', function(req, res) {
-    res.render('login');
+    res.render('login', {error: req.flash('error')});
 });
 
 router.get('/logout', function(req, res){
@@ -35,11 +35,19 @@ router.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-router.post('/login',
-  passport.authenticate('local'), function(req,res,next){
-    res.redirect('/admin')
-  }
-);
+router.post('/login', function(req, res, next){
+  passport.authenticate('local', function(err, user, info){
+    if (err) { return next(err); }
+    if (!user) { 
+      req.flash('error', 'Invalid user credentials')
+      return res.redirect('/login'); 
+    }
+    req.logIn(user, function(err) {
+      if (err) { return next(err); }
+      return res.redirect(req.session.returnTo || '/admin');
+    });        
+  })(req,res,next)
+});
 
 router.get('/persons', function(req, res, next){
 	res.send(persons);
